@@ -21,41 +21,6 @@ struct NamedVector {
     {
     }
 
-    NamedVector(const NamedVector& other)
-        : NamedVector(other.name, other.x, other.y)
-    {
-    }
-
-    NamedVector(NamedVector&& other) noexcept
-    {
-        swap(other);
-    }
-
-    NamedVector& operator=(const NamedVector& other)
-    {
-        NamedVector tmp(other);
-        swap(tmp);
-        return *this;
-    }
-
-    NamedVector& operator=(NamedVector&& other) noexcept
-    {
-        swap(other);
-        return *this;
-    }
-
-    ~NamedVector()
-    {
-        delete name;
-    }
-
-    void swap(NamedVector& other) noexcept
-    {
-        std::swap(name, other.name);
-        std::swap(x, other.x);
-        std::swap(y, other.y);
-    }
-
     Name* name = nullptr;
     float x = 0.f;
     float y = 0.f;
